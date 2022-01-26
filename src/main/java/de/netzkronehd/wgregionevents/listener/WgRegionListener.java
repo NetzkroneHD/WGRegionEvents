@@ -79,28 +79,4 @@ public class WgRegionListener implements Listener {
 
     }
 
-    @EventHandler
-    public void onRegionEnter(RegionEnterEvent e) {
-        e.getPlayer().sendMessage("You are entering "+e.getRegion().getId());
-
-    }
-
-    @EventHandler
-    public void onRegionEntered(RegionEnteredEvent e) {
-        e.getPlayer().sendMessage("You entered "+e.getRegion().getId());
-
-    }
-
-    @EventHandler
-    public void onRegionLeave(RegionLeaveEvent e) {
-        e.getPlayer().sendMessage("You are leaving "+e.getRegion().getId());
-
-    }
-
-    @EventHandler
-    public void onRegionLeft(RegionLeftEvent e) {
-        e.getPlayer().sendMessage("You left "+e.getRegion().getId());
-
-    }
-
 }
