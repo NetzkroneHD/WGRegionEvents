@@ -1,0 +1,7 @@
+name: WGRegionEvents
+version: '${project.version}'
+main: de.netzkronehd.wgregionevents.WgRegionEvents
+
+author: NetzkroneHD
+api-version: 1.13
+depend: [WorldGuard]
