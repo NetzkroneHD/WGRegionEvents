@@ -75,4 +75,5 @@ public class WgPlayer {
     public Player getPlayer() {
         return player;
     }
+
 }

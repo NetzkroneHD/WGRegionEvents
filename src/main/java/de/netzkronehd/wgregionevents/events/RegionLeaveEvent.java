@@ -27,6 +27,7 @@ public class RegionLeaveEvent extends RegionEvent implements Cancellable {
         if(getMovementWay().isCancellable()) {
             cancelled = b;
         } else throw new IllegalStateException("Movement '"+getMovementWay().getName()+"' is not cancelable.");
+
     }
 
 }

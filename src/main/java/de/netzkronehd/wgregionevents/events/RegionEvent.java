@@ -22,6 +22,7 @@ public class RegionEvent extends PlayerEvent {
         this.parentEvent = parent;
         this.to = to;
         this.from = from;
+
     }
 
     public HandlerList getHandlers() {

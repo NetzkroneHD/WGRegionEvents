@@ -76,7 +76,6 @@ public class WgRegionListener implements Listener {
     public void onRespawn(PlayerRespawnEvent e) {
         final WgPlayer wp = wg.getPlayer(e.getPlayer().getUniqueId());
         wp.updateRegions(MovementWay.SPAWN, e.getRespawnLocation(), e.getPlayer().getLocation(), e);
-
     }
 
 }

@@ -24,12 +24,15 @@ public class MovementWay {
     public String getName() {
         return name;
     }
+
     public int ordinal() {
         return ordinal;
     }
+
     public boolean isCancellable() {
         return cancellable;
     }
+
     public String name() {
         return name;
     }

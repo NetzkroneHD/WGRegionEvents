@@ -20,9 +20,7 @@ import java.util.Map;
 
 public class SimpleWorldGuardAPI {
 
-    public SimpleWorldGuardAPI() {
-
-    }
+    public SimpleWorldGuardAPI() {}
 
     /**
      * Receives a {@link ProtectedRegion} via id.

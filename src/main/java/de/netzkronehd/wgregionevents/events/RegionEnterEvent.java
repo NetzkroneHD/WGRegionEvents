@@ -29,4 +29,5 @@ public class RegionEnterEvent extends RegionEvent implements Cancellable {
             cancelled = b;
         } else throw new IllegalStateException("Movement '"+getMovementWay().getName()+"' is not cancelable.");
     }
+
 }

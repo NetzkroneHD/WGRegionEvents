@@ -25,7 +25,6 @@ public class WgRegionEvents extends JavaPlugin {
         instance = this;
         playerCache = new HashMap<>();
         simpleWorldGuardAPI = new SimpleWorldGuardAPI();
-
     }
 
     @Override
