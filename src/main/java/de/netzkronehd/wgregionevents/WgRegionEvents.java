@@ -17,12 +17,14 @@ import java.util.UUID;
 public class WgRegionEvents extends JavaPlugin {
 
     private static WgRegionEvents instance;
+    public static boolean citizens = false;
     private HashMap<UUID, WgPlayer> playerCache;
     private SimpleWorldGuardAPI simpleWorldGuardAPI;
 
     @Override
     public void onLoad() {
         instance = this;
+        citizens = Bukkit.getPluginManager().getPlugin("Citizens") != null;
         playerCache = new HashMap<>();
         simpleWorldGuardAPI = new SimpleWorldGuardAPI();
     }
