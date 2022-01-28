@@ -4,6 +4,7 @@ import com.sk89q.worldguard.protection.regions.ProtectedRegion;
 import de.netzkronehd.wgregionevents.WgRegionEvents;
 import de.netzkronehd.wgregionevents.objects.WgPlayer;
 import de.netzkronehd.wgregionevents.events.*;
+import net.citizensnpcs.api.CitizensAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -20,12 +21,14 @@ public class WgRegionListener implements Listener {
 
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onLogin(PlayerLoginEvent e) {
+        if(WgRegionEvents.citizens && CitizensAPI.getNPCRegistry().isNPC(e.getPlayer())) return;
         wg.getPlayerCache().remove(e.getPlayer().getUniqueId());
         wg.getPlayerCache().put(e.getPlayer().getUniqueId(), new WgPlayer(e.getPlayer()));
     }
 
     @EventHandler(priority = EventPriority.HIGH)
     public void onKick(PlayerKickEvent e) {
+        if(WgRegionEvents.citizens && CitizensAPI.getNPCRegistry().isNPC(e.getPlayer())) return;
         final WgPlayer wp = wg.getPlayer(e.getPlayer().getUniqueId());
         for (ProtectedRegion region : wp.getRegions()) {
             final RegionLeaveEvent leaveEvent = new RegionLeaveEvent(region, e.getPlayer(), MovementWay.DISCONNECT, e, e.getPlayer().getLocation(), e.getPlayer().getLocation());
@@ -39,6 +42,7 @@ public class WgRegionListener implements Listener {
 
     @EventHandler(priority = EventPriority.HIGH)
     public void onQuit(PlayerQuitEvent e) {
+        if(WgRegionEvents.citizens && CitizensAPI.getNPCRegistry().isNPC(e.getPlayer())) return;
         final WgPlayer wp = wg.getPlayer(e.getPlayer().getUniqueId());
         if(wp != null) {
             for (ProtectedRegion region : wp.getRegions()) {
@@ -55,18 +59,21 @@ public class WgRegionListener implements Listener {
 
     @EventHandler(priority = EventPriority.HIGH)
     public void onMove(PlayerMoveEvent e) {
+        if(WgRegionEvents.citizens && CitizensAPI.getNPCRegistry().isNPC(e.getPlayer())) return;
         final WgPlayer wp = wg.getPlayer(e.getPlayer().getUniqueId());
         e.setCancelled(wp.updateRegions(MovementWay.MOVE, e.getTo(), e.getFrom(), e));
     }
 
     @EventHandler(priority = EventPriority.HIGH)
     public void onMove(PlayerTeleportEvent e) {
+        if(WgRegionEvents.citizens && CitizensAPI.getNPCRegistry().isNPC(e.getPlayer())) return;
         final WgPlayer wp = wg.getPlayer(e.getPlayer().getUniqueId());
         e.setCancelled(wp.updateRegions(MovementWay.TELEPORT, e.getTo(), e.getFrom(), e));
     }
 
     @EventHandler(priority = EventPriority.HIGH)
     public void onJoin(PlayerJoinEvent e) {
+        if(WgRegionEvents.citizens && CitizensAPI.getNPCRegistry().isNPC(e.getPlayer())) return;
         final WgPlayer wp = wg.getPlayer(e.getPlayer().getUniqueId());
         wp.updateRegions(MovementWay.SPAWN, e.getPlayer().getLocation(), e.getPlayer().getLocation(), e);
 
@@ -74,6 +81,7 @@ public class WgRegionListener implements Listener {
 
     @EventHandler(priority = EventPriority.HIGH)
     public void onRespawn(PlayerRespawnEvent e) {
+        if(WgRegionEvents.citizens && CitizensAPI.getNPCRegistry().isNPC(e.getPlayer())) return;
         final WgPlayer wp = wg.getPlayer(e.getPlayer().getUniqueId());
         wp.updateRegions(MovementWay.SPAWN, e.getRespawnLocation(), e.getPlayer().getLocation(), e);
     }
