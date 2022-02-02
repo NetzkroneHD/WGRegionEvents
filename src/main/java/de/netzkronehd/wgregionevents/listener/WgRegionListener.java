@@ -61,21 +61,21 @@ public class WgRegionListener implements Listener {
     public void onMove(PlayerMoveEvent e) {
         if(WgRegionEvents.citizens && CitizensAPI.getNPCRegistry().isNPC(e.getPlayer())) return;
         final WgPlayer wp = wg.getPlayer(e.getPlayer().getUniqueId());
-        e.setCancelled(wp.updateRegions(MovementWay.MOVE, e.getTo(), e.getFrom(), e));
+        if(wp != null) e.setCancelled(wp.updateRegions(MovementWay.MOVE, e.getTo(), e.getFrom(), e));
     }
 
     @EventHandler(priority = EventPriority.HIGH)
     public void onMove(PlayerTeleportEvent e) {
         if(WgRegionEvents.citizens && CitizensAPI.getNPCRegistry().isNPC(e.getPlayer())) return;
         final WgPlayer wp = wg.getPlayer(e.getPlayer().getUniqueId());
-        e.setCancelled(wp.updateRegions(MovementWay.TELEPORT, e.getTo(), e.getFrom(), e));
+        if(wp != null) e.setCancelled(wp.updateRegions(MovementWay.TELEPORT, e.getTo(), e.getFrom(), e));
     }
 
     @EventHandler(priority = EventPriority.HIGH)
     public void onJoin(PlayerJoinEvent e) {
         if(WgRegionEvents.citizens && CitizensAPI.getNPCRegistry().isNPC(e.getPlayer())) return;
         final WgPlayer wp = wg.getPlayer(e.getPlayer().getUniqueId());
-        wp.updateRegions(MovementWay.SPAWN, e.getPlayer().getLocation(), e.getPlayer().getLocation(), e);
+        if(wp != null) wp.updateRegions(MovementWay.SPAWN, e.getPlayer().getLocation(), e.getPlayer().getLocation(), e);
 
     }
 
@@ -83,7 +83,7 @@ public class WgRegionListener implements Listener {
     public void onRespawn(PlayerRespawnEvent e) {
         if(WgRegionEvents.citizens && CitizensAPI.getNPCRegistry().isNPC(e.getPlayer())) return;
         final WgPlayer wp = wg.getPlayer(e.getPlayer().getUniqueId());
-        wp.updateRegions(MovementWay.SPAWN, e.getRespawnLocation(), e.getPlayer().getLocation(), e);
+        if(wp != null) wp.updateRegions(MovementWay.SPAWN, e.getRespawnLocation(), e.getPlayer().getLocation(), e);
     }
 
 }
