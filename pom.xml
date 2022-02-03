@@ -6,7 +6,7 @@
 
     <groupId>de.netzkronehd</groupId>
     <artifactId>wgregionevents</artifactId>
-    <version>1.7</version>
+    <version>1.7.1</version>
     <packaging>jar</packaging>
 
     <name>WGRegionEvents</name>
@@ -90,9 +90,10 @@
         <dependency>
             <groupId>com.sk89q.worldguard</groupId>
             <artifactId>worldguard-bukkit</artifactId>
-            <version>LATEST</version>
+            <version>7.0.4</version>
             <scope>provided</scope>
         </dependency>
+
         <dependency>
             <groupId>net.citizensnpcs</groupId>
             <artifactId>citizens-main</artifactId>
@@ -100,5 +101,6 @@
             <type>jar</type>
             <scope>provided</scope>
         </dependency>
+
     </dependencies>
 </project>

@@ -43,25 +43,26 @@ public class WgRegionEvents extends JavaPlugin {
      * Force updates the regions of the {@link org.bukkit.entity.Player Player}
      * @param player {@link Player} to be checked.
      * @param way The {@link MovementWay way} how the player moved.
-     * @param to {@link org.bukkit.Location} where the {@link Player} came from.
-     * @param from {@link org.bukkit.Location} where the {@link Player} will go.
+     * @param to {@link org.bukkit.Location} where the {@link Player} will go.
+     * @param from {@link org.bukkit.Location} where the {@link Player} came from.
      * @param parent If the {@link MovementWay} was caused by a {@link org.bukkit.event.player.PlayerEvent}
      * @return true if the operation was cancelled
      */
     public boolean updateRegions(Player player, MovementWay way, Location to, Location from, PlayerEvent parent) {
-        return updateRegions(Objects.requireNonNull(getPlayer(player.getUniqueId()), "Player can't be null"), way, to, from, parent);
+        return updateRegions(getPlayer(player.getUniqueId()), way, to, from, parent);
     }
 
     /**
      * Force updates the regions of the {@link WgPlayer Player}
      * @param player {@link WgPlayer} to be checked.
      * @param way The {@link MovementWay way} how the player moved.
-     * @param to {@link org.bukkit.Location} where the {@link WgPlayer} came from.
-     * @param from {@link org.bukkit.Location} where the {@link WgPlayer} will go.
+     * @param to {@link org.bukkit.Location} where the {@link WgPlayer} will go.
+     * @param from {@link org.bukkit.Location} where the {@link WgPlayer} came from.
      * @param parent If the {@link MovementWay} was caused by a {@link org.bukkit.event.player.PlayerEvent}
      * @return true if the operation was cancelled
      */
     public boolean updateRegions(WgPlayer player, MovementWay way, Location to, Location from, PlayerEvent parent) {
+        Objects.requireNonNull(player, "WgPlayer 'player' can't be null");
         return player.updateRegions(way, to, from, parent);
     }
 

@@ -22,6 +22,10 @@ public class WgPlayer {
     }
 
     public boolean updateRegions(MovementWay way, Location to, Location from, PlayerEvent parent) {
+        Objects.requireNonNull(way, "MovementWay 'way' can't be null");
+        Objects.requireNonNull(to, "Location 'to' can't be null");
+        Objects.requireNonNull(from, "Location 'from' can't be null");
+
         final ApplicableRegionSet toRegions = WgRegionEvents.getInstance().getSimpleWorldGuardAPI().getRegions(to);
         final ApplicableRegionSet fromRegions = WgRegionEvents.getInstance().getSimpleWorldGuardAPI().getRegions(player.getLocation());
         if(!toRegions.getRegions().isEmpty()) {
