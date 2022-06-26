@@ -27,7 +27,7 @@ public class WgPlayer {
         Objects.requireNonNull(from, "Location 'from' can't be null");
 
         final ApplicableRegionSet toRegions = WgRegionEvents.getInstance().getSimpleWorldGuardAPI().getRegions(to);
-        final ApplicableRegionSet fromRegions = WgRegionEvents.getInstance().getSimpleWorldGuardAPI().getRegions(player.getLocation());
+        final ApplicableRegionSet fromRegions = WgRegionEvents.getInstance().getSimpleWorldGuardAPI().getRegions(from);
         if(!toRegions.getRegions().isEmpty()) {
             for(ProtectedRegion region : toRegions) {
                 if(!regions.contains(region)) {

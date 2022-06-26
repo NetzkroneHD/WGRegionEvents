@@ -6,13 +6,13 @@
 
     <groupId>de.netzkronehd</groupId>
     <artifactId>wgregionevents</artifactId>
-    <version>1.7.1</version>
+    <version>1.7.2</version>
     <packaging>jar</packaging>
 
     <name>WGRegionEvents</name>
 
     <properties>
-        <java.version>1.8</java.version>
+        <java.version>1.17</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -64,18 +64,10 @@
             <url>https://oss.sonatype.org/content/groups/public/</url>
         </repository>
 
+        <!-- https://worldguard.enginehub.org/en/latest/developer/dependency/ !-->
         <repository>
             <id>sk89q-repo</id>
             <url>https://maven.enginehub.org/repo/</url>
-        </repository>
-
-        <repository>
-            <id>jitpack.io</id>
-            <url>https://jitpack.io</url>
-        </repository>
-        <repository>
-            <id>everything</id>
-            <url>https://repo.citizensnpcs.co/</url>
         </repository>
     </repositories>
 
@@ -83,22 +75,15 @@
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
-            <version>1.18.1-R0.1-SNAPSHOT</version>
+            <version>1.19-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
 
+        <!-- https://worldguard.enginehub.org/en/latest/developer/dependency/ !-->
         <dependency>
             <groupId>com.sk89q.worldguard</groupId>
             <artifactId>worldguard-bukkit</artifactId>
             <version>7.0.4</version>
-            <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>net.citizensnpcs</groupId>
-            <artifactId>citizens-main</artifactId>
-            <version>2.0.29-SNAPSHOT</version>
-            <type>jar</type>
             <scope>provided</scope>
         </dependency>
 
