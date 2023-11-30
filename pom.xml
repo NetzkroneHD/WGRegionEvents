@@ -6,7 +6,7 @@
 
     <groupId>de.netzkronehd</groupId>
     <artifactId>wgregionevents</artifactId>
-    <version>1.7.2</version>
+    <version>1.7.4</version>
     <packaging>jar</packaging>
 
     <name>WGRegionEvents</name>
@@ -17,6 +17,7 @@
     </properties>
 
     <build>
+        <finalName>WGRegionEvents</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -75,7 +76,7 @@
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
-            <version>1.19-R0.1-SNAPSHOT</version>
+            <version>1.20.2-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
 

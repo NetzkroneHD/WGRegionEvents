@@ -6,7 +6,6 @@ import de.netzkronehd.wgregionevents.events.MovementWay;
 import de.netzkronehd.wgregionevents.events.RegionLeaveEvent;
 import de.netzkronehd.wgregionevents.events.RegionLeftEvent;
 import de.netzkronehd.wgregionevents.objects.WgPlayer;
-import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -27,7 +26,7 @@ public class WgRegionListener implements Listener {
     public void onLogin(PlayerLoginEvent e) {
         if(e.getResult() != PlayerLoginEvent.Result.ALLOWED) return;
         wg.getPlayerCache().remove(e.getPlayer().getUniqueId());
-        wg.getPlayerCache().put(e.getPlayer().getUniqueId(), new WgPlayer(e.getPlayer()));
+        wg.getPlayerCache().put(e.getPlayer().getUniqueId(), new WgPlayer(e.getPlayer(), wg));
     }
 
     @EventHandler(
@@ -52,9 +51,12 @@ public class WgRegionListener implements Listener {
         for (ProtectedRegion region : wp.getRegions()) {
             final RegionLeaveEvent leaveEvent = new RegionLeaveEvent(region, e.getPlayer(), MovementWay.DISCONNECT, e, e.getPlayer().getLocation(), e.getPlayer().getLocation());
             final RegionLeftEvent leftEvent = new RegionLeftEvent(region, e.getPlayer(), MovementWay.DISCONNECT, e, e.getPlayer().getLocation(), e.getPlayer().getLocation());
-            Bukkit.getPluginManager().callEvent(leaveEvent);
-            Bukkit.getPluginManager().callEvent(leftEvent);
+            wg.getServer().getPluginManager().callEvent(leaveEvent);
+            wg.getServer().getPluginManager().callEvent(leftEvent);
         }
+        wg.getSimpleWorldGuardAPI().isInRegion(e.getPlayer().getLocation(), "name");
+
+
         wp.getRegions().clear();
         wg.getPlayerCache().remove(e.getPlayer().getUniqueId());
     }
@@ -69,8 +71,8 @@ public class WgRegionListener implements Listener {
         for (ProtectedRegion region : wp.getRegions()) {
             final RegionLeaveEvent leaveEvent = new RegionLeaveEvent(region, e.getPlayer(), MovementWay.DISCONNECT, e, e.getPlayer().getLocation(), e.getPlayer().getLocation());
             final RegionLeftEvent leftEvent = new RegionLeftEvent(region, e.getPlayer(), MovementWay.DISCONNECT, e, e.getPlayer().getLocation(), e.getPlayer().getLocation());
-            Bukkit.getPluginManager().callEvent(leaveEvent);
-            Bukkit.getPluginManager().callEvent(leftEvent);
+            wg.getServer().getPluginManager().callEvent(leaveEvent);
+            wg.getServer().getPluginManager().callEvent(leftEvent);
 
         }
         wp.getRegions().clear();

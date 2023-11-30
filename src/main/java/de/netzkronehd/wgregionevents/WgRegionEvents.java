@@ -4,7 +4,6 @@ import de.netzkronehd.wgregionevents.api.SimpleWorldGuardAPI;
 import de.netzkronehd.wgregionevents.events.MovementWay;
 import de.netzkronehd.wgregionevents.listener.WgRegionListener;
 import de.netzkronehd.wgregionevents.objects.WgPlayer;
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerEvent;
@@ -30,12 +29,9 @@ public class WgRegionEvents extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        Bukkit.getPluginManager().registerEvents(new WgRegionListener(instance), instance);
-    }
-
-    @Override
-    public void onDisable() {
-
+        getServer().getPluginManager().registerEvents(new WgRegionListener(instance), instance);
+        playerCache.clear();
+        getServer().getOnlinePlayers().forEach(player -> playerCache.put(player.getUniqueId(), new WgPlayer(player, instance)));
     }
 
     /**
@@ -61,7 +57,7 @@ public class WgRegionEvents extends JavaPlugin {
      * @return true if the operation was cancelled
      */
     public boolean updateRegions(WgPlayer player, MovementWay way, Location to, Location from, PlayerEvent parent) {
-        Objects.requireNonNull(player, "WgPlayer 'player' can't be null");
+        Objects.requireNonNull(player, "WgPlayer 'player' can not be null.");
         return player.updateRegions(way, to, from, parent);
     }
 
